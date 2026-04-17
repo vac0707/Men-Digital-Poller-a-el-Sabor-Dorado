@@ -211,7 +211,7 @@ export default function App() {
             </span>
             <h1 className="hero-title text-5xl sm:text-7xl text-white mb-6 leading-[1] font-black uppercase">
               EL VERDADERO SABOR<br />
-              DEL POLO A LA BRASA
+              DEL POLLO A LA BRASA
             </h1>
             <p className="text-white/70 text-base mb-10 font-medium max-w-lg leading-relaxed">
               Traspasamos la frontera del sabor con nuestra receta secreta, papas 100% naturales y las cremas más adictivas de la ciudad. 
