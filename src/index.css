@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+  
+  --color-primary: #D32F2F; /* Red */
+  --color-secondary: #FFC107; /* Yellow/Gold */
+  --color-dark: #121212;
+  --color-light: #F5F5F5;
+  --color-white: #FFFFFF;
+  --color-success: #25D366;
+  
+  --color-accent: #D32F2F;
+  --color-surface: #FFFFFF;
+  --color-background: #121212;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans;
+    background: radial-gradient(circle at top right, #333333, #121212);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-black tracking-tight uppercase;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-md border border-white/10;
+}
+
+.pro-card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Professional Polish Layout Utils */
+.pro-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr 280px;
+  grid-template-rows: 80px 1fr 100px;
+}
