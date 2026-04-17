@@ -1,7 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { MENU_PRODUCTS } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const apiKey = process.env.GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const SYSTEM_PROMPT = `
 Eres "Saborín", el asistente virtual experto de "Pollería El Sabor Dorado" en Abancay, Perú. 
@@ -24,6 +25,9 @@ REGLAS TÉCNICAS:
 `;
 
 export async function getGeminiResponse(userMessage: string, history: { role: 'user' | 'model', parts: [{ text: string }] }[]) {
+  if (!ai) {
+    return "¡Hola casero! Mi 'chip' de inteligencia no está configurado todavía (falta API Key), pero el Pollo Dorado sigue saliendo rico. ¿En qué plato puedo ayudarte?";
+  }
   try {
     const model = "gemini-3-flash-preview";
     
