@@ -218,7 +218,7 @@ export default function App() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a 
-                href="#menu" 
+                href="#promos" 
                 className="bg-white hover:bg-secondary text-dark px-10 py-4 rounded-full font-black flex items-center gap-3 transition-all active:scale-95 shadow-2xl text-sm uppercase tracking-wider"
               >
                 VER OFERTAS DEL DÍA
@@ -268,25 +268,29 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredPromos.map((promo, idx) => (
-            <motion.div 
-              key={idx}
-              whileHover={{ y: -5 }}
-              className={`${promo.color} ${promo.text} p-10 rounded-2xl flex flex-col justify-center text-center relative overflow-hidden group h-64 shadow-2xl border-2 border-white/5`}
-            >
-              <div className="relative z-10 flex flex-col items-center">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-4 block">🔥 {promo.title}</span>
-                <h3 className="text-4xl mb-4 font-black">{promo.subtitle}</h3>
-                <p className="text-sm font-bold opacity-70 mb-8">{promo.desc}</p>
-                <a 
-                  href="https://wa.me/932350348" 
-                  className={`inline-flex items-center gap-2 font-black text-[10px] uppercase tracking-widest py-3 px-6 rounded-full transition-all hover:scale-105 active:scale-95 ${promo.color === 'bg-secondary' ? 'bg-dark text-white' : 'bg-white text-dark'}`}
-                >
-                  PEDIR POR WHATSAPP
-                </a>
-              </div>
-            </motion.div>
-          ))}
+          {featuredPromos.map((promo, idx) => {
+            const promoMessage = encodeURIComponent(`¡Hola El Sabor Dorado! 🔥 Quiero pedir la promoción: *${promo.title} - ${promo.subtitle}* (${promo.desc})`);
+            return (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -5 }}
+                className={`${promo.color} ${promo.text} p-10 rounded-2xl flex flex-col justify-center text-center relative overflow-hidden group h-64 shadow-2xl border-2 border-white/5`}
+              >
+                <div className="relative z-10 flex flex-col items-center">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-4 block">🔥 {promo.title}</span>
+                  <h3 className="text-4xl mb-4 font-black">{promo.subtitle}</h3>
+                  <p className="text-sm font-bold opacity-70 mb-8">{promo.desc}</p>
+                  <a 
+                    href={`https://wa.me/932350348?text=${promoMessage}`} 
+                    target="_blank"
+                    className={`inline-flex items-center gap-2 font-black text-[10px] uppercase tracking-widest py-3 px-6 rounded-full transition-all hover:scale-105 active:scale-95 ${promo.color === 'bg-secondary' ? 'bg-dark text-white' : 'bg-white text-dark'}`}
+                  >
+                    PEDIR POR WHATSAPP
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
